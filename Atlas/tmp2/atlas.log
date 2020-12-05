@@ -1,0 +1,205 @@
+﻿Build started 2020-11-13 20:39:14.
+     1>Project "E:\cpp\ATLAS-cutter\Atlas\atlas\atlas.vcxproj" on node 2 (Rebuild target(s)).
+     1>PrepareForBuild:
+         Creating directory "..\tmp2\atlas.tlog\".
+       InitializeBuildStatus:
+         Creating "..\tmp2\atlas.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\CL.exe /c /I..\..\common_src\ /ZI /JMC /nologo /W4 /WX- /diagnostics:classic /sdl /MP /Od /Oi /Oy- /D _CRT_SECURE_NO_WARNINGS /Gm- /EHsc /RTC1 /MDd /GS /Gy /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"..\tmp2\\" /Fd"..\tmp2\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:prompt ..\..\common_src\FileOperation.cpp ..\..\common_src\ImGui\imgui_impl_dx11.cpp ..\..\common_src\ImGui\imgui_impl_sdl.cpp ..\..\common_src\ValidatePath.cpp ..\..\common_src\zoom.cpp ..\src\AlphaUtils.cpp ..\src\dx11implementation.cpp ..\src\FileLoadAndSave.cpp ..\src\main2.cpp ..\src\RectangleItem.cpp
+         FileOperation.cpp
+         imgui_impl_dx11.cpp
+         imgui_impl_sdl.cpp
+         ValidatePath.cpp
+         zoom.cpp
+         AlphaUtils.cpp
+         dx11implementation.cpp
+         FileLoadAndSave.cpp
+         main2.cpp
+     1>e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'bu' used
+     1>e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'gu' used
+     1>e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'ru' used
+         RectangleItem.cpp
+     1>e:\cpp\atlas-cutter\atlas\src\rectangleitem.cpp(355): warning C4100: 'showFlashFlag': unreferenced formal parameter
+     1>e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(56): warning C4189: 'retval': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(62): warning C4189: 'retval': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(78): warning C4189: 'retval': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\common_src\validatepath.cpp(255): warning C4456: declaration of 'stringsize' hides previous local declaration
+         e:\cpp\atlas-cutter\common_src\validatepath.cpp(95): note: see declaration of 'stringsize'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(142): warning C4189: 'fline4': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(141): warning C4189: 'fline3': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(481): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(62): note: see declaration of 'width'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(482): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(63): note: see declaration of 'height'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1279): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(62): note: see declaration of 'width'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1280): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(63): note: see declaration of 'height'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1345): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(62): note: see declaration of 'width'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1346): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(63): note: see declaration of 'height'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1526): warning C4189: 'io': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1966): warning C4189: 'chosen_color0': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2135): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(62): note: see declaration of 'width'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2136): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(63): note: see declaration of 'height'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2136): warning C4189: 'height': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2212): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(62): note: see declaration of 'width'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2213): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(63): note: see declaration of 'height'
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2212): warning C4189: 'width': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\main2.cpp(45): warning C4100: 'argc': unreferenced formal parameter
+     1>e:\cpp\atlas-cutter\atlas\src\main2.cpp(66): warning C4189: 'fname': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\main2.cpp(67): warning C4189: 'fpath': local variable is initialized but not referenced
+     1>e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(678): warning C4701: potentially uninitialized local variable 'tzoom' used
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"..\Release\atlas.exe" /VERBOSE:Lib /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib d3d11.lib SDL2_image.lib imgui.lib shell32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"..\Release\atlas.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\Release\atlas.lib" /MACHINE:X86 ..\tmp2\FileOperation.obj
+         ..\tmp2\imgui_impl_dx11.obj
+         ..\tmp2\imgui_impl_sdl.obj
+         ..\tmp2\ValidatePath.obj
+         ..\tmp2\zoom.obj
+         ..\tmp2\AlphaUtils.obj
+         ..\tmp2\dx11implementation.obj
+         ..\tmp2\FileLoadAndSave.obj
+         ..\tmp2\main2.obj
+         ..\tmp2\RectangleItem.obj
+         
+         Searching libraries
+             Searching \cpp\usr\local\lib\SDL2.lib:
+             Searching \cpp\usr\local\lib\SDL2main.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3d11.lib:
+             Searching \cpp\usr\local\lib\SDL2_image.lib:
+             Searching ..\..\common_lib\imgui.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\msvcprtd.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRTD.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\OLDNAMES.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3dcompiler.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\imm32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRT.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\vcruntimed.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrtd.lib:
+             Searching \cpp\usr\local\lib\SDL2.lib:
+             Searching \cpp\usr\local\lib\SDL2main.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3d11.lib:
+             Searching \cpp\usr\local\lib\SDL2_image.lib:
+             Searching ..\..\common_lib\imgui.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\msvcprtd.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRTD.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\OLDNAMES.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3dcompiler.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\imm32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRT.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\vcruntimed.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrtd.lib:
+             Searching \cpp\usr\local\lib\SDL2.lib:
+             Searching \cpp\usr\local\lib\SDL2main.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3d11.lib:
+             Searching \cpp\usr\local\lib\SDL2_image.lib:
+             Searching ..\..\common_lib\imgui.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\msvcprtd.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRTD.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\OLDNAMES.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3dcompiler.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\imm32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRT.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\vcruntimed.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrtd.lib:
+         
+         Finished searching libraries
+     1>LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+         
+         Searching libraries
+             Searching \cpp\usr\local\lib\SDL2.lib:
+             Searching \cpp\usr\local\lib\SDL2main.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3d11.lib:
+             Searching \cpp\usr\local\lib\SDL2_image.lib:
+             Searching ..\..\common_lib\imgui.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\msvcprtd.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRTD.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\OLDNAMES.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\uuid.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3dcompiler.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\user32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\kernel32.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\imm32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRT.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\vcruntimed.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\ucrt\x86\ucrtd.lib:
+         
+         Finished searching libraries
+         
+         Searching libraries
+             Searching \cpp\usr\local\lib\SDL2.lib:
+             Searching \cpp\usr\local\lib\SDL2main.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\d3d11.lib:
+             Searching \cpp\usr\local\lib\SDL2_image.lib:
+             Searching ..\..\common_lib\imgui.lib:
+             Searching C:\Program Files (x86)\Windows Kits\10\lib\10.0.18362.0\um\x86\shell32.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\msvcprtd.lib:
+             Searching C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\MSVCRTD.lib:
+         
+         Finished searching libraries
+         atlas.vcxproj -> E:\cpp\ATLAS-cutter\Atlas\atlas\..\Release\atlas.exe
+       FinalizeBuildStatus:
+         Deleting file "..\tmp2\atlas.tlog\unsuccessfulbuild".
+         Touching "..\tmp2\atlas.tlog\atlas.lastbuildstate".
+     1>Done Building Project "E:\cpp\ATLAS-cutter\Atlas\atlas\atlas.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+       "E:\cpp\ATLAS-cutter\Atlas\atlas\atlas.vcxproj" (Rebuild target) (1) ->
+       (ClCompile target) -> 
+         e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'bu' used
+         e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'gu' used
+         e:\cpp\atlas-cutter\atlas\src\alphautils.cpp(73): warning C4701: potentially uninitialized local variable 'ru' used
+         e:\cpp\atlas-cutter\atlas\src\rectangleitem.cpp(355): warning C4100: 'showFlashFlag': unreferenced formal parameter
+         e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(56): warning C4189: 'retval': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(62): warning C4189: 'retval': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\fileloadandsave.cpp(78): warning C4189: 'retval': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\common_src\validatepath.cpp(255): warning C4456: declaration of 'stringsize' hides previous local declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(142): warning C4189: 'fline4': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(141): warning C4189: 'fline3': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(481): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(482): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1279): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1280): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1345): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1346): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1526): warning C4189: 'io': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(1966): warning C4189: 'chosen_color0': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2135): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2136): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2136): warning C4189: 'height': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2212): warning C4459: declaration of 'width' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2213): warning C4459: declaration of 'height' hides global declaration
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(2212): warning C4189: 'width': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\main2.cpp(45): warning C4100: 'argc': unreferenced formal parameter
+         e:\cpp\atlas-cutter\atlas\src\main2.cpp(66): warning C4189: 'fname': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\main2.cpp(67): warning C4189: 'fpath': local variable is initialized but not referenced
+         e:\cpp\atlas-cutter\atlas\src\dx11implementation.cpp(678): warning C4701: potentially uninitialized local variable 'tzoom' used
+
+
+       "E:\cpp\ATLAS-cutter\Atlas\atlas\atlas.vcxproj" (Rebuild target) (1) ->
+       (Link target) -> 
+         LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+
+    29 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:04.77

@@ -1,0 +1,836 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<base href="http://www.johno.se/book/imgui.html">
+<title>Immediate Mode Model/View/Controller</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<style data-savepage-href="styles.css" type="text/css">body
+{
+	font-family: 'Trebuchet MS', sans-serif;
+	font-size: 10pt;
+	margin-left: 4cm;
+	margin-right: 4cm;
+}
+
+.juice
+{
+ font-family: courier new;
+ font-size: 10pt;
+ margin-left: 2cm;
+ margin-right: 2cm;
+ background: aquamarine;
+}
+
+.cpp
+{
+ font-family: courier new;
+ font-size: 10pt;
+ margin-left: 2cm;
+ margin-right: 2cm;
+ background: gainsboro;
+}
+
+.bold
+{
+ font-weight: bold;
+ color: blue;
+}
+
+.todo
+{
+ color: red;
+}
+
+span
+{
+ color: green;
+}
+
+b
+{
+	color: blue;
+}
+
+i
+{
+ font-weight: bold;
+ color: darkred;
+}
+
+legend
+{
+	font-weight: bold;
+	color: blue;
+}</style>
+
+<link rel="icon" href="">
+<style id="savepage-cssvariables">
+  :root {
+  }
+</style>
+<script id="savepage-shadowloader" type="application/javascript">
+  "use strict"
+  window.addEventListener("DOMContentLoaded",
+  function(event)
+  {
+    savepage_ShadowLoader(5);
+  },false);
+  function savepage_ShadowLoader(c){createShadowDOMs(0,document.documentElement);function createShadowDOMs(a,b){var i;if(b.localName=="iframe"||b.localName=="frame"){if(a<c){try{if(b.contentDocument.documentElement!=null){createShadowDOMs(a+1,b.contentDocument.documentElement)}}catch(e){}}}else{if(b.children.length>=1&&b.children[0].localName=="template"&&b.children[0].hasAttribute("data-savepage-shadowroot")){b.attachShadow({mode:"open"}).appendChild(b.children[0].content);b.removeChild(b.children[0]);for(i=0;i<b.shadowRoot.children.length;i++)if(b.shadowRoot.children[i]!=null)createShadowDOMs(a,b.shadowRoot.children[i])}for(i=0;i<b.children.length;i++)if(b.children[i]!=null)createShadowDOMs(a,b.children[i])}}}
+</script>
+<script id="savepage-pageinfo-bar-insert" type="application/javascript">
+  "use strict"
+  window.addEventListener('load',function(event) {
+    var parser = new DOMParser();
+    var pageinfodoc = parser.parseFromString('<html> <style id="savepage-pageinfo-bar-style" type="text/css">#savepage-pageinfo-bar-content,#savepage-pageinfo-bar-content *{all:initial!important}#savepage-pageinfo-bar-content,#savepage-pageinfo-bar-content *{font-family:"Segoe UI","Helvetica Neue",Ubuntu,Arial!important;font-size:12px!important;color:black!important;cursor:default!important;-moz-user-select:none!important;-webkit-user-select:none!important}#savepage-pageinfo-bar-content{display:flex!important;position:fixed!important;left:0!important;top:0!important;width:100%!important;height:25px!important;border-bottom:1px solid #E0E0E0!important;background:#F8F8F8!important;overflow:hidden!important;z-index:2147483645!important}#savepage-pageinfo-bar-spacer-1{flex:0 1 auto!important;background:#F8F8F8!important}#savepage-pageinfo-bar-link{flex:0 1 auto!important;padding:4px 0!important;background:#F8F8F8!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}#savepage-pageinfo-bar-link:hover{text-decoration:underline!important}#savepage-pageinfo-bar-spacer-2{flex:1 1 auto!important;background:#F8F8F8!important}#savepage-pageinfo-bar-datetime{flex:0 1000000 auto!important;min-width:0!important;padding:4px 0!important;background:#F8F8F8!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}#savepage-pageinfo-bar-spacer-3{flex:0 1 auto!important;background:#F8F8F8!important}#savepage-pageinfo-bar-button{flex:0 0 25px!important;background-color:#F8F8F8!important;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVChTYwCC/0DsAGJgASBxkDycga4QQxxdAEMBDCBLYFUAAyQpIGgVCGAoxBCAAhRxrEZDAVCc4T8AbzkX8F/+uCwAAAAASUVORK5CYII=)!important;background-repeat:no-repeat!important;background-position:center center!important}#savepage-pageinfo-bar-button:hover{background-color:#E8E8E8!important}#savepage-pageinfo-bar-button:active{background-color:#D8D8D8!important}</style> <div id="savepage-pageinfo-bar-content"> <div id="savepage-pageinfo-bar-spacer-1">&nbsp;&nbsp;&nbsp;</div> <a id="savepage-pageinfo-bar-link" href="http://www.johno.se/book/imgui.html" target="_blank">http://www.johno.se/book/imgui.html</a> <div id="savepage-pageinfo-bar-spacer-2">&nbsp;&nbsp;&nbsp;</div> <div id="savepage-pageinfo-bar-datetime">23 Jul 2020&nbsp;&nbsp;&nbsp;21:40:04</div> <div id="savepage-pageinfo-bar-spacer-3">&nbsp;&nbsp;&nbsp;</div> <div id="savepage-pageinfo-bar-button"></div> </div> </html>','text/html');
+    var container = document.createElement('div');
+    container.setAttribute('id','savepage-pageinfo-bar-container');
+    document.documentElement.appendChild(container);
+    container.appendChild(pageinfodoc.getElementById('savepage-pageinfo-bar-style'));
+    container.appendChild(pageinfodoc.getElementById('savepage-pageinfo-bar-content'));
+    document.getElementById('savepage-pageinfo-bar-button').addEventListener('click',function(event) {
+      var container = document.getElementById('savepage-pageinfo-bar-container');
+      document.documentElement.removeChild(container);
+    },false);
+  },false);
+</script>
+<meta name="savepage-url" content="http://www.johno.se/book/imgui.html">
+<meta name="savepage-title" content="Immediate Mode Model/View/Controller">
+<meta name="savepage-from" content="http://www.johno.se/book/imgui.html">
+<meta name="savepage-date" content="Thu Jul 23 2020 21:40:04 GMT+0200 (Central European Summer Time)">
+<meta name="savepage-state" content="Basic Items; Retained cross-origin frames; Removed unsaved URLs; Allowed passive mixed content; Sent referer headers with origin only; Max frame depth = 5; Max resource size = 100MB; Max resource time = 32s;">
+<meta name="savepage-version" content="16.5">
+<meta name="savepage-comments" content="">
+  </head>
+
+
+<body>
+
+<p><b><i><font color="red">This book is a work in progress, comments are welcome to: johno(at)johno(dot)se</font></i></b></p>
+
+<a href="index.html">Back to index...</a>
+
+<h1>IMGUI</h1>
+
+<ul>
+<li><p>Here is a <a href="imgui.pdf" target="_blank">PDF version of this material</a> which I made for a lecture.</p></li>
+
+<li><p>For original information on doing guis in Immediate Mode (i.e no retained state), check out the forums at <a href="http://www.mollyrocket.com">http://www.mollyrocket.com</a>.</p></li>
+
+<li><p>Also: <a href="http://sol.gfxile.net/files/Assembly07_IMGUI.pdf">http://sol.gfxile.net/files/Assembly07_IMGUI.pdf</a></p></li>
+
+<li><p><a href="http://www.johno.se/software/IMGUI.zip">GDIplus test, including tree controls, combo boxes, sliders, and drag-and-drop</a></p></li>
+</ul>
+
+<h2>Motivation</h2>
+<p>Programming user interfaces has a reputation of being difficult. This is perhaps much due to the fact that user interface toolkits tend to be large and complex software systems. They often have a steep learning curve and are often cumbersome to use, typically involving quite a bit of application specific implementation in order to integrate. When you next log onto <a href="http://www.poker.dk/">Poker dk</a>, or Twitter, take into account the multifaceted nuances of the UI, as you'll be surprised at how many components they really have. Designing such a toolkit is harder still, and it is my experience (when it comes to games) that even a toolkit that is explicitly designed for re-use doesn't get re-used very much in practice.</p>
+
+<p>Due in large part to the advances in dedicated graphics hardware (GPUs) during the past 10+ years, it is now entirely feasible to approach user interfaces in a novel way. <b>I</b>mmediate <b>M</b>ode <b>G</b>raphical <b>U</b>ser <b>I</b>nterface (<b>IMGUI</b>) represents a paradigm where user interfaces are simpler to create (for the client application) and simpler to implement (for the toolkit designer).</p>
+
+<h2>The broken paradigm</h2>
+
+<p>There is a dominant paradigm within programming since (forever?), and that simply:</p>
+
+<p><b><i>The user interface and / or visualization of any program is inherently stateful.</i></b></p>
+
+<p>I maintain that this is a broken paradigm. Not that such things CANNOT be stateful; the current state of various software technlogies are indeed based upon this paradigm. I will however argue that avoiding such statefulness <b>significantly</b> simplifies software.</p>
+
+<h2>The woes of caching state</h2>
+
+<p>I maintain that much of the complexity associated with the design and use of of traditional user interface systems is a direct result of the tendency of such systems to retain state. The programmer is typically required to actively copy state back and forth between the application and the user interface in order for the user interface to reflect the state of the application, and conversely, for changes that happen in the user interface to affect the state of the application.</p>
+
+<p>This is the basic problem; this state (inherent to the user interface system) is a COPY / CACHE of the REAL state, which is owned by and resides with in the specific application itself.</p>
+
+<p>The user interface, from the point of view of the client application, most often looks like a collection of objects, typically one per "widget", which encapsulate state that needs to be frequently synchronized with that of the application. Such synchronization goes both ways; state moves from the application to the user interface in order for that state to become visible to the user, and state moves from the user interface back to the application when the user interacts with the interface in order to change the state of the application.</p>
+
+<p>When the user interacts with the user interface, the client application must explicitly move state from the widgets back into application data structures. Sometimes, depending on the toolkit used, a level of automation is provided by the user interface toolkit for such "data exchange", but the synchronization itself (not to mention the duplicated state) is still a fact of life.</p>
+
+<p>Additionally, the manner in which the application is notified of user interactions with the interface (which in turn signals a need for re-syncing of state) often takes the form of callbacks. This requires the application to implement "event handlers" for any low-level interaction that is of interest, often by subclassing some toolkit baseclass either manually or via various code generation tricks; in either case further complicating the life of the client application.</p>
+
+<h2>Immediate Mode applied</h2>
+
+<p><b>IMGUI</b> does away with this type of state synchronization by requiring the application to explicitly pass all state required for visualization and interaction with any given "widget" in real-time. The user interface only retains the minimal amount of state required to facilitate the functionality required by each type of widget supported by the system.</p>
+
+<p>With <b>IMGUI</b>, a conceptual shift occurs. Widgets are no longer objects at all, and can't really be said to "exist". They take instead the form of procedural method calls, and the user interface itself goes from being as stateful collection of objects to being a real time sequence of method calls.</p>
+
+<p>Fundamental to this approach is the concept of a real-time application loop, where the application processes logic and draws its display at real-time rates (30 frames per second or more). In the context of games, this is already common practice.</p>
+
+<p>At first glance it might seem extremely cumbersome to constantly be passing the required state to the user interface, but this is in practice not at all true. Also, it might seem wasteful (from a computing resources standpoint) to be constantly resubmitting state and redrawing the user interface at real-time rates. However with modern CPU speeds and GPU fillrates this is not a problem at all.</p>
+
+<p>The gains are in both simplicity and flexibility. The removal of the implicit state cache in the user interface system results in less potential for cache-related bugs, and also completely removes the need for the toolkit to expose widgets to the client application as objects at all. <b>Widgets, logically, change from being objects to being method invocations</b>. As we shall see, this fundamentally changes how a client application approaches the implementation of user interfaces.</p>
+
+<h2>Issues of acceptance</h2>
+
+<p>Before diving into implementation details, I want to discuss the big WHY of this.</p>
+
+<p>I realize that one of the compelling reasons to use existing user-interface toolkits is the fact that there exist toolkits to be used; you don't have to code it yourself, and can concentrate on the details of your own application. Here I am about to explain how to implement a user-interface toolkit from scratch; why is this interesting at all?</p>
+
+<p>It may not be immediately obvious here, but the main gain and reason to use <b>IMGUI</b> is that the actual application specific client code becomes MUCH less (fewer LOC) and MUCH simpler. For small applications this may not be a gain, but any significantly complex user interface is usually non-trivial to implement and maintain, even given a robust user-interface toolkit.</p>
+
+<h3>An example of simplification</h3>
+
+<p>In one of my games, UfoPilot II : The Phadt Menace, the entire "front-end" user interface was initially implemented in classic retained mode style. This was more or less equivalent to how MFC dialog boxes worked, in that I had a class for each specific "screen", and instantiated an object of each of these classes as the user navigated throughout the interface.</p>
+
+<p>Each "screen class" had multiple widget members, and layout was part of construction and much a manual issue where I would run the program, look at the placement of things, shut it down, edit the code, and repeat. A dedicated editor (like MFC has) might perhaps have helped me here.</p>
+
+<p>Upon porting this user interface to <b>IMGUI</b>, with toolkit-methods being implemented as needed during the porting process (I built my Gui class as I went along, moving code from Widget classes to the Gui class), I gained several things:</p>
+
+<p>Firstly, in each case where there was a class for a "screen", this collapsed from a class to a single method in a Menu class (which represented the entire collection of front-end screens and code). So where I had previously had about 10-15 classes I now had a single class.</p>
+
+<p>All of the widgets classes collapsed into methods of the Gui class, so again, where I previously had several classes I now had one.</p>
+
+<p>Further changes and iterations of the front-end changed from being a painful experience involving widget instantiation, layout, callbacks, etc, to being about adding or removing a few lines of code in the form of "if(doButton()) do something...".</p>
+
+<p>Layout was still coded straight into the application, but since I already had this information it was simply a matter of moving the code around.</p>
+
+<h3>How to encourage acceptance</h3>
+
+<p>Someone is going to have to implement a reference tookit and one or several applications that use it. In addition, these applications must underline the fact that this is about a paradigm shift, not just a nifty trick. Indeed, looking at WPF, the whole mindset is still extremely retained.</p>
+
+<p>Up until now it hasn't really been feasible on win32 (unless one turns to using DirectX) due to the overhead of drawing with GDI or GDI+. However on Windows 7 the new DirectX apis Direct2D and DirectWrite might prove to be a good solution for high-resolution / high-performance <b>IMGUI</b> applications.</p>
+
+<p>This reference toolkit needs to "look good". This means widgets that look "modern"; it would probably be a good idea, from a political standpoint, to involve an artist in this... :)</p>
+
+<p>The "layout issue" needs to be adressed, because for many applications I suspect that requiring the programmer to deal with layout per "widget" will simply not be feasible.</p>
+
+<p><b><i><font color="red">TODO: more information (as promised) in the Advanced Features section on how to implement "built-in layout".</font></i></b></p>
+
+<h2>Basic implementation (Object Oriented)</h2>
+
+<p>The client sees a single <b>Gui</b> instance (the <b>IMGUI</b> "context"). This single instance encapsulates the entire gui "system" / or "framework". <b>Gui</b> will typically expose one or more methods per widget type that you would typically need in your application.</p>
+
+<p>Here is the interface of an example <b>Gui</b> class:</p>
+
+<div class="cpp">
+<pre><b>class</b> Gui
+{
+<b>public</b>:
+
+    <b>void</b> label(<b>const int</b> aX, <b>const int</b> aY, <b>const char</b>* aText);
+    <b>const bool</b> button(<b>const int</b> aX, <b>const int</b> aY,
+                      <b>const int</b> aWidth, <b>const int</b> aHeight,
+                      <b>const char</b>* aText);
+    <b>const bool</b> radio(<b>const bool</b> anActive,
+                     <b>const int</b> aX, <b>const int</b> aY,
+                     <b>const int</b> aWidth, <b>const int</b> aHeight,
+                     <b>const char</b>* aText);
+    <b>const bool</b> check(<b>const bool</b> anActive,
+                        <b>const int</b> aX, <b>const int</b> aY,
+                        <b>const int</b> aWidth, <b>const int</b> aHeight,
+                        <b>const char</b>* aText);
+    <b>const bool</b> tab(<b>const bool</b> anActive,
+                   <b>const int</b> aX, <b>const int</b> aY,
+                   <b>const int</b> aWidth, <b>const int</b> aHeight,
+                   <b>const char</b>* aText);
+    <b>void</b> edit(<b>const int</b> aX, <b>const int</b> aY, String&amp; aString);
+};
+</pre>
+</div>
+
+<p>From the point of view of the client application, using <b>Gui</b> is very straightforward. In order to put a given type of widget on the screen, the client simply calls the corresponding method.</p>
+
+<p>In the above example, all methods that return <b>const bool</b> will return <b>true</b> if the left mouse button was clicked inside the bounds of that widget. Also, the screen position and size of each widget is explicitly passed in each call (<b>aX</b>, <b>aY</b>, <b>aWidth</b>, <b>aHeight</b>). Depending on the application, this might be a pro or a con, as we shall see in later sections.</p>
+
+<p>In any case, observe the basic premise; <b>the client application passes all the state required for a given widget to operate at any given time, and on a frame-by-frame basis</b>.</p>
+
+<h3>Buttons</h3>
+<p>Based on this premise, reacting to a button-click is as simple as:</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>if</b>(myGui.button(64, 64, 32, 16))
+    {
+        <span>//do something as a result of the button being clicked</span>
+    }
+}
+</pre>
+</div>
+
+<p>Observe the absence of any type of event handling callback; both creating and reacting to interaction with a button is simple as an <b>if</b> statement.</p>
+
+<h3>Radio buttons, check boxes, and tabs</h3>
+<p>An interesting aspect of <b>IMGUI</b> is that the classic widget types radio button, check box, and tab (i.e. like in a property sheet) are functionally equivalent from a client perspective. The various methods are here only for aesthetic reasons, i.e. depending on your application one or the other may be more applicable.</p>
+
+<p>Using these widget types is a matter of explictly passing the application state that represents the "activeness" of each widget. Here is an example with radio buttons:</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+<b>int</b> myChoice(0);
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>int</b> i;
+
+    <b>for</b>(i = 0; i &lt; 5; i++)
+    {
+        <b>if</b>(myGui.radio(myChoice == i,
+                       64, 64 + i * 20,
+                       32, 16,
+                       String::format(<i>"choice %d"</i>, i + 1)))
+        {
+            myChoice = i;
+        }
+    }
+}
+</pre>
+</div>
+
+<p>As you can see, the user interface that results from the above code is based on the actual state of the application, not that of any "widget objects". Again, the central theme of <b>IMGUI</b>; there is no need to explicitly synchronize application state to gui state, as there is only a single copy of state in existence, namely that of the application itself.</p>
+
+<p>The call to <b>String::format()</b> simply returns a formatted string (<b>sprintf()</b> style) to use as the label for each radio button. Note also the above use of "dynamic layout"; the resulting radio buttons are evenly spaced in the y-dimension by 20 units.</p>
+
+<h3>Edit boxes</h3>
+<p>Using an edit box is similarly simple, in which case you pass a String reference which is the string to be edited. Again, the idea is to pass a String instance that is part of your application state to be edited directly by the gui.</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+String myString(<i>"hello"</i>);
+
+<b>void</b> doSomeUserInterface()
+{
+    myGui.edit(64, 64, myString);
+}
+</pre>
+</div>
+
+<h3>Hey, where's the list box?</h3>
+<p>Most user interface toolkits support the concept of a list box / list control. Interestingly this widget type is largely obselete with <b>IMGUI</b> (unless you explicitly require scrolling support; see the section on advanced features). Since a list is often simply a bunch of text labels, you can support that by simply doing the following:</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+String myStrings[5] = {<i>"hello"</i>, <i>"how"</i>, <i>"are"</i>, <i>"you"</i>, <i>"doing"</i>};
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>int</b> i;
+
+    <b>for</b>(i = 0; i &lt; 5; i++)
+        myGui.label(64, 64 + i * 16, myStrings[i]);
+}
+</pre>
+</div>
+
+<p>If you need selection support (as many list boxes support), you can do something similar to the following, which again is the typical approach to radio buttons or property sheets / tabs (see above):</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+String myStrings[5] = {<i>"hello"</i>, <i>"how"</i>, <i>"are"</i>, <i>"you"</i>, <i>"doing"</i>};
+<b>int</b> mySelection(0);
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>int</b> i;
+
+    <b>for</b>(i = 0; i &lt; 5; i++)
+    {
+        if(myGui.radio(mySelection == i,
+                       64, 64 + i * 16,
+                       32, 16,
+                       myStrings[i]))
+        {
+            mySelection = i;
+        }
+    }
+}
+</pre>
+</div>
+
+<p>At this point it should be clear that the list box / list control concept doesn't exist per-se in <b>IMGUI</b>, as you can simply iterate application state and "do a widget" per item in your collection. While this might be viewed as cumbersome, remember that traditional user interface toolkits require you to sync your application state with that of the list box itself (and vice-versa).</p>
+
+<p>Additionally, with <b>IMGUI</b> it is trivial to create a gui that includes what looks just like a "list widget" that supports different kinds of "widgets" per line (i.e. text, buttons, images, etc), something which is typically very difficult to do with traditional toolkits.</p>
+
+<h2>How it works</h2>
+
+<h3>Widgets as methods instead of objects</h3>
+<p>Each "widget method" in the Gui class encapsulates both the existence, interaction, and display of each logical "widget". Once again, note that from the perspective of the client that widgets can only be said to "exist" in the form of a method invocation; widgets change from being objects to being method calls.</p>
+
+<p>One of the main gains here is the complete centralization of control to the calling code. Both the "widgets" and the code that reacts to user interaction with these widgets are all in the same place.</p>
+
+<p>Additionally, consider the following example:</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+<b>bool</b> myEnableChoices(<b>false</b>);
+<b>int</b> myChoice(0);
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>if</b>(myGui.button(64, 64, 32, 16))
+    {
+        myEnableChoices = !myEnableChoices;
+    }
+
+    <b>if</b>(myEnableChoices)
+    {
+        <b>int</b> i;
+
+        <b>for</b>(i = 0; i &lt; 5; i++)
+        {
+            <b>if</b>(myGui.radio(myChoice == i,
+                           64, 64 + i * 20,
+                           32, 16,
+                           String::format(<i>"choice %d"</i>, i + 1)))
+            {
+                myChoice = i;
+            }
+        }
+    }
+}
+</pre>
+</div>
+
+<p>As you can see, it is very simple to "enable or disable" certain aspects of the user interface, due to the fact that the user interface doesn't really exist at all in the form of objects to be enabled or disabled, and can thus be easily changed on a per-frame basis without any overhead.</p>
+
+<p>Of course one could use any arbitrarily complex expression in place of the simple boolean variable <b>myEnabledChoices</b>; this is a big part of the power and flexibility of <b>IMGUI</b>. In traditional user interface systems, this kind of functionality would typically require mass enabling / disabling of widget objects.</p>
+
+<h3>Implementing basic interactions</h3>
+<p>In the above examples, a central interaction is the concept of clicking on a widget with the left mouse button. In order to do this, you need to have direct pollable access to the position of the mouse cursor as well as the state of the buttons (how to do that is of course system specific and outside the scope of this text).</p>
+
+<p>Consider this implementation of <b>button()</b>:</p>
+
+<div class="cpp">
+<pre><b>const bool</b> Gui::button(<b>const int</b> aX, <b>const int</b> aY,
+                       <b>const int</b> aWidth, <b>const int</b> aHeight,
+                       <b>const char</b>* aText)
+{
+    drawRect(aX, aY, aWidth, aHeight);
+    drawText(aX, aY, aText);
+
+    <b>return</b> mouse::leftButtonPressed() &amp;&amp;
+           mouse::cursorX() &gt;= aX &amp;&amp;
+           mouse::cursorY() &gt;= aY &amp;&amp;
+           mouse::cursorX() &lt; (aX + aWidth) &amp;&amp;
+           mouse::cursorY() &lt; (aY + aHeight);
+}
+</pre>
+</div>
+
+<p>As you can see, this implementation is quite trivial.</p>
+
+<h3>Implementing edit boxes</h3>
+
+<p>Edit boxes are slightly more complicated than buttons due mainly to the issue of input focus, which is required to support several editboxes on the screen at the same time.</p>
+
+<div class="cpp">
+<pre><b>void</b> Gui::edit(<b>const int</b> aX, <b>const int</b> aY, String&amp; aString)
+{
+    <b>if</b>(&amp;aString == myEditInstance)
+        activeEdit(aX, aY, aString);
+    <b>else</b>
+        passiveEdit(aX, aY, aString);
+}
+</pre>
+</div>
+
+<p><b>Gui</b> maintains a pointer to the string that is currently being edited in order to retain focus across frames. This is essentially a simple "blind data handle" (<b>const void</b>*) and only used by <b>Gui</b> as an identifier of external (application) context.</p>
+
+<p>Based on this focus information, each edit box is either active (only one at any given time) or passive. The implementation of <b>activeEdit()</b> is omitted here in the interest of brevity, but can be seen in full in the Direct3D example.</p>
+
+<div class="cpp">
+<pre><b>void</b> Gui::passiveEdit(<b>const int</b> aX, <b>const int</b> aY, <b>const</b> String&amp; aString)
+{
+    <b>if</b>(radio(<b>false</b>, aX, aY, aString))
+        myEditInstance = &amp;aString;
+}
+</pre>
+</div>
+
+<p>A passive edit box is here implemented as an inactive radio button, where clicking on it will set it to be in focus, making it active.</p>
+
+<p>The implementation of edit boxes highlights an important detail of <b>IMGUI</b>s; they are not completely stateless. However, they need only retain enough state to handle a single interaction at a time. This is a key detail of how <b>IMGUI</b> can get away without widget objects; they logically have some internal "widget state", but only a single copy of what is needed for each supported widget type, since the user can only interact with a single widget at any given time.</p>
+
+<h3>Implementing display</h3>
+<p>When it comes to the actual display of the widget, there are some different approaches to consider, depending on a few aspects of your application needs.</p>
+
+<p>In the above interaction examples, the internal methods <b>drawRect()</b> and <b>drawText()</b> are called before the actual interaction was calculated and returned. What these methods actually do depends on a number of factors, as we shall see below. In any case, care must be taken by the calling code not to create situations with overlap (these basic examples cannot handle overlapping widgets / windows in any way, but see the more advanced examples for how to implement this).</p>
+
+<h4>Direct display</h4>
+<p>If the calling code intends to do all user interface interaction and display in a single pass, and given that the platform itself supports it, you can basically have <b>drawRect()</b> and <b>drawText()</b> render directly to whatever underlying "canvas" you have.</p>
+
+<p>Most software based 2d drawing libraries (for example GDI on Win32) will support this type of implementation, as they most often have the concept of a "drawing canvas" and are typically intrinsically insensitive to drawing order or the number of drawing calls made.</p>
+
+<h4>Deferred display</h4>
+<p>In situations where display needs to be more controlled, deferred display can be used. This basically boils down to having <b>drawRect()</b> and <b>drawText()</b> log "drawing events" to some list, and later have the application traverse this list and draw it appropriately.</p>
+
+<p>Situations where this is appropriate include most hardware accelerated applications, where the underlying API's are optimized for batching of similar primitives. For example, my Direct3D based implementations typically have a vertex buffer in the <b>Gui</b> class which each <b>drawRect()</b> call writes to, and then when it is time to draw the user interface (usually the last thing to be drawn), the client code calls <b>Gui::draw()</b> to flush the internal cache of "draw events". Note that this cache only persists for the duration of a single frame, and facilitates effective batching of primitives.</p>
+
+<p>Another reason to use deferred display is if your application separates input from output, as many games do. In the typical loop of <b>input()</b> / <b>update()</b> / <b>output()</b>, the "widget calls" and the corresponding reactions to the resulting interactions would go in <b>input()</b>, while the actual display of the buffered widgets would go in <b>output()</b>, often displayed last (on top of any 3d stuff you are displaying).</p>
+
+<h2>Implications and tradeoffs</h2>
+
+<h3>The Style and/or Layout issue</h3>
+<p>In the examples covered, the issue of layout (where the widgets are positioned on the screen and their sizes) is entirely the responsibility of the calling code. In some cases this is entirely appropriate, for example when the user interface needs to be very dynamic and / or animated.</p>
+
+<p>In other cases, finer aesthetic control is required, for example when artists or other non-programmers need to be in control of widget placement and appearance. Consider the following:</p>
+
+<div class="cpp">
+<pre><b>class</b> Gui
+{
+<b>public</b>:
+
+    Gui(<b>const</b> LookAndFeel&amp; aLookAndFeel);
+    <b>const bool</b> button(<b>const</b> Layout&amp; aLayout, <b>const char</b>* aText);
+};
+</pre>
+</div>
+
+<p>By parameterizing <b>Gui</b> itself with a "look and feel" which encapsulates details of widget appearance, any imaginable data-driven visualization approach can be supported.</p>
+
+<p>Also, by objectifying layout information for each widget call, data-driven layout objects can be used, perhaps controlled be an external editor and loaded at application startup.</p>
+
+<div class="cpp">
+<pre>Gui myGui;
+<b>int</b> myChoice(0);
+Layout myLayouts[5];
+
+<b>void</b> doSomeUserInterface()
+{
+    <b>int</b> i;
+
+    <b>for</b>(i = 0; i &lt; 5; i++)
+    {
+        <b>if</b>(myGui.radio(myChoice == i, myLayouts[i]))
+            myChoice = i;
+    }
+}
+</pre>
+</div>
+
+<p>As you can see, this cleans up the code significantly while still allowing the code to control the "existence" of widgets at any given time. It is important to note that this isn't the same concept as fully objectifying widgets; we are only objectifying their layout information.</p>
+
+<p>This approach can be extended, in true Immediate Mode style, to build layout editing right into the <b>Gui</b> class. By enabling a way for the user to toggle "layout edit mode", perhaps by simply holding down the SHIFT key, click-and-drag style editing of layouts could be supported (see the section on advanced features for details on implementing this).</p>
+
+<p><b><i><font color="red">TODO: actually write this information down!</font></i></b></p>
+
+<h3>Frame shearing</h3>
+<p>One aspect of <b>IMGUI</b> to be aware of in the context of real-time applications (constantly rendering new frames many times per second) is that user interactions will always be in response to something that was drawn on a previous frame. This is because the user interface must be drawn at least once for the user to be aware that there are widgets there to be interacted with. Most of the time this doesn't cause any problems if the frame rate is high enough, but it is something to be aware of.</p>
+
+<p>There is a chance that the result of any given widget interaction changes some application state that controls the appearance of the user interface itself, and such discrepancies can result in parts of the user interface reflecting the "old" state while some reflect the "new" state. I call this "frame shearing", in that the displayed image represents parts of two different logical images at once.</p>
+
+<p>Again, in real time cases (30 fps or higher) this is most often simply not apparent to the user, but if you have a case where you don't want to / aren't able to display the gui at interactive rates (maybe you have some intricate caching scheme going on) you need to take certain precautions (one example of this is using <b>IMGUI</b> techniques in web applications, see that section for more details).</p>
+
+<p>The main technique to utilize is to have any code that changes the appearance of the user interface generate a "shearing exception" which breaks out of the method that generates the gui for the current frame and restarts the entire process for the current frame. Theoretically a "shearing exception" must be thrown for each interaction that could change the appearance of the user interface, but in practice this usally only happens once per frame (i.e. the gui is at most generated in full more than once but less than twice). As the application owns all state, it needs to explicitly throw shearing exceptions when changes to such state is made.</p>
+
+<h2>Advanced features</h2>
+
+<p>Some applications will get by with the basic widgets outlined so far, while others will require more advanced widgets and features. Widget types like combo-boxes, tree controls, sliders, and edit boxes, which are intrinsically more complex than (for example) buttons, are sometimes useful and are indeed possible to implement in <b>IMGUI</b> without too much trouble.</p>
+
+<p><b>NOTE: due to their inherent complexity, these advanced features are intended to be accompanied by real working code examples.</b></p>
+
+<h3>How advanced do we want to be?</h3>
+
+<p>Before getting into the details of such widgets, it is at this point worth mentioning that many of these more complex widget types are related to saving screen real-estate (combo-boxes, tree-controls, sliders and scrolling functionality in general). I speculate that the original reason for the existence of such functionality is directly related to the difficulty / expense of changing and / or creating and destroying the user interface dynamically.</p>
+
+<p>With <b>IMGUI</b>, widget existence is controlled by method invocations, and layout can be completely dynamic and procedural. This means that the contents of the entire screen can change on a per frame basis, effectively making the amount of screen real-estate infinite. This means that there is no real need for overlapping windows, scrolling views, etc. Alternatives to scrolling include "pages" of items, closely related to using tabs / property sheets in place of multiple windows.</p>
+
+<p>From a usability standpoint, I personally feel that user interfaces which don't heavily rely on scrolling or multiple overlapping windows are more productive. However, user expectations and established user interface standards are still important for a large number of applications. Therefore, we now look at some more advanced widget types.</p>
+
+<h3>Tree controls</h3>
+<p>Tree controls can basically be reduced to a "node" widget that can be expanded and collapsed. In order to make this friendly for the client application, an application handle / identifier needs to be passed to the call.</p>
+
+<div class="cpp">
+<pre><b>for</b>(c = 0; c &lt; NUM_CATEGORIES; c++)
+{
+    <span>//returns true if node is expanded
+    //application passes a const void* to identify the node
+    //across frames (first param, can be anything which is
+    //unique and constant across frame boundaries)
+    //actual expand/collapse state is stored inside the gui
+    //in a map (const void* &lt;-&gt; bool)</span>
+    <b>if</b>(myGui.node(CATEGORY_NAMES[c], x, y, CATEGORY_NAMES[c]))
+    {
+        <span>//do gui for expanded node</span>
+    }
+}
+</pre>
+</div>
+
+<p>The <b>Gui</b> class supports this by maintaining an internal collection of mappings between <b>const void</b>* and <b>bool</b>, which encapsulates the expand / collapse state of each logical node. This relieves the client application of the need to keep gui-related state associated with application data items.</p>
+
+<div class="cpp">
+<pre><b>bool</b> Gui::node(<b>const void</b>* aHandle, <b>const int</b> aX, <b>const int</b> aY, <b>const char</b>* aLabel)
+{
+    <b>bool</b>&amp; h(handleState(aHandle));
+    String s;
+
+    s.format(h ? <i>"-%s"</i> : <i>"+%s"</i>, aLabel);
+    <b>if</b>(doRadio(h, aX, aY, s))
+        h = !h;
+
+    <b>return</b> h;
+}
+</pre>
+</div>
+
+<h3>Combo boxes</h3>
+<p>Combo boxes / drop-down lists are very similar to tree controls; they can be implemented using the same handle concept. The <b>Gui</b> manages the expand / collapse functionality, and can additionally support the disabling of all other widget interactions when a combo box is expanded, in order to support overlap (of the expanded list over other widgets).</p>
+
+<div class="cpp">
+<pre><span>//calling code</span>
+<b>static const char</b>* COMBO_CHOICES[] =
+{
+    <i>"orange"</i>,
+    <i>"pink"</i>,
+    <i>"red"</i>,
+    <i>"blue"</i>,
+    NULL,
+};
+<b>int</b> myChoice(0);
+
+myGui.combo(myChoice, 64, 64, COMBO_CHOICES);
+
+
+<span>//implementation</span>
+<b>void</b> Gui::combo(<b>unsigned int</b>&amp; aChoice, <b>const int</b> aX, <b>const int</b> aY, <b>const char</b>** someChoices)
+{
+    <b>bool</b>&amp; h(handleState(&amp;aChoice));
+
+    <span>//expanded</span>
+    <b>if</b>(h)
+    {
+        <span>//current choice</span>
+        <b>if</b>(doButton(aX, aY, someChoices[aChoice]))
+            h = <b>false</b>; <span>//same choice</span>
+
+        <span>//list</span>
+        <b>unsigned int</b> c(0);
+        <b>int</b> y(aY);
+        <b>while</b>(someChoices[c]) <span>//terminate on NULL</span>
+        {
+            <b>if</b>(doRadio(c == aChoice, aX, y += buttonHeight(), someChoices[c]))
+            {
+                aChoice = c;
+                h = <b>false</b>;
+            }
+            c++;
+        }
+    }
+    <span>//collapsed</span>
+    <b>else</b>
+    {
+        <b>if</b>(doRadio(h, aX, aY, someChoices[aChoice]))
+            h = <b>true</b>;
+    }
+}
+</pre>
+</div>
+
+<h3>Sliders / scrollbars</h3>
+
+<p>Sliders / scrollbars, when broken down into pieces, are really just a background rectangle, an optional text to display the current value, as well as rectangle that acts as the "drag handle", positioned in the appropriate place and with the appropriate size to denote the current value. The <b>Gui</b> retains a <b>float</b>* to the current value, set by clicking inside the drag handle and updated by moving the mouse with the button down, in order to keep track of which value to update.</p>
+
+<div class="cpp">
+<pre><b>void</b> Gui::horizontalSlider(<b>const float</b> aMax, <b>const float</b> aRange, <b>float</b>&amp; aValue,
+                           <b>const int</b> aX, <b>const int</b> aY,
+                           <b>const int</b> aWidth, <b>const int</b> aHeight)
+{
+    <b>const int</b> SIZE((<b>int</b>)(aWidth * aRange / aMax));
+
+    <span>//if this is the current one, update the value</span>
+    <b>if</b>(&amp;aValue == myScrollValue)	<span>//myScrollValue is a float*</span>
+    {
+        aValue += sliderX() / (<b>float</b>)(aWidth - SIZE) * aMax;
+        <b>if</b>(aValue &lt; 0.f)
+            aValue = 0.f;
+        <b>else if</b>(aValue &gt; aMax)
+            aValue = aMax;
+    }
+
+    <span>//display the value as text</span>
+    text(aX + aWidth / 2 , aY, String::format(<i>"%.1f"</i>, aValue));
+
+    <span>//draw a background</span>
+    rect(aX, aY, aWidth, aHeight, <b>true</b>);
+
+    <span>//do the dragabble thing (the slider)</span>
+    if(rect(aX + (<b>int</b>)((aWidth - SIZE) * aValue / aMax), aY, SIZE, aHeight, <b>true</b>) &amp;&amp;
+        !myScrollValue &amp;&amp;
+        isButtonDown(VK_LBUTTON))
+    {
+        myScrollValue = &amp;aValue;
+    }
+}
+</pre>
+</div>
+
+<h3>Drag and drop</h3>
+
+<p>Drag and drop is similar to edit boxes in that there is a passive and an active mode of operation for each "draggable widget". For display reasons, it is often useful to keep a separate text and rect for the thing being dragged, in order to be able to display it on top (drawn last) of all the other widgets, as support for overlapped rendering is required in this case (see the implementation of <b>doDrag()</b>).</p>
+
+<div class="cpp">
+<pre><b>const bool</b> Gui::drag(<b>const void</b>* aHandle,
+                     <b>const int</b> aX, <b>const int</b> aY,
+                     <b>const int</b> aWidth, <b>const int</b> aHeight,
+                     <b>const char</b>* aText)
+{
+    <b>if</b>(aHandle == myDragHandle)
+    {
+        <span>//do drag</span>
+        doDrag(aWidth, aHeight, aText);
+
+        <span>//being dragged</span>
+        <b>return true</b>;
+    }
+    <b>else</b>
+    {
+        <b>if</b>(aText)
+            text(aX, aY, aText);
+
+        <b>if</b>(rect(aX, aY, aWidth, aHeight, <b>true</b>) &amp;&amp;
+            !myDragHandle &amp;&amp;
+            isButtonDown(VK_LBUTTON))
+        {
+            <span>//setup drag</span>
+            myDragHandle = aHandle;
+            beginDrag(aX, aY, aWidth, aHeight, aText);
+
+            <span>//being dragged</span>
+            <b>return true</b>;
+        }
+    }
+
+    <span>//not being dragged</span>
+    <b>return false</b>;
+}
+
+<b>void</b> Gui::beginDrag(<b>const int</b> aScreenX, <b>const int</b> aScreenY,
+                    <b>const int</b> aWidth, <b>const int</b> aHeight,
+                    <b>const char</b>* aText)
+{
+    <b>const</b> POINT CP(cursorPos());
+
+    myDragPos.x = CP.x - aScreenX;
+    myDragPos.y = CP.y - aScreenY;
+
+    doDrag( aHeight, aText);
+}
+
+<b>void</b> Gui::doDrag(<b>const int</b> aWidth, <b>const int</b> aHeight, <b>const char</b>* aText)
+{
+    <b>const</b> POINT CP(cursorPos());
+    <b>const int</b> X(CP.x - myDragPos.x), Y(CP.y - myDragPos.y);
+
+    <b>if</b>(aText)
+        myDragText.set(X, Y, aText);
+
+    myDragRect.set(X, Y, aWidth, aHeight);
+}
+</pre>
+</div>
+
+<h3>Keyboard support</h3>
+<h4>Hotkeys / accelerators</h4>
+
+<p>Supporting hotkeys / accelerators is quite easy, it's just a case of adding a keycode parameter to your various widget methods.</p>
+
+<div class="cpp">
+<pre><b>class</b> Gui
+{
+<b>public</b>:
+
+    <b>const bool</b> button(<b>const int</b> aKeyCode,
+                      <b>const int</b> aX, <b>const int</b> aY,
+                      <b>const int</b> aWidth, <b>const int</b> aHeight,
+                      <b>const char</b>* aText);
+};
+</pre>
+</div>
+
+<p>Next, in the code that checks for a click inside the widget, also include a check for the key being pressed. Note that the mouse cursor needn't be inside the widget in order for the keypress to be registered.</p>
+
+<div class="cpp">
+<pre><b>const bool</b> Gui::button(<b>const int</b> aKeyCode,
+                       <b>const int</b> aX, <b>const int</b> aY,
+                       <b>const int</b> aWidth, <b>const int</b> aHeight,
+                       <b>const char</b>* aText)
+{
+    drawRect(aX, aY, aWidth, aHeight);
+    drawText(aX, aY, aText);
+
+    <b>return</b> (
+            mouse::leftButtonPressed() &amp;&amp;
+            mouse::cursorX() &gt;= aX &amp;&amp;
+            mouse::cursorY() &gt;= aY &amp;&amp;
+            mouse::cursorX() &lt; (aX + aWidth) &amp;&amp;
+            mouse::cursorY() &lt; (aY + aHeight)
+            ) ||
+            keyboard::keyPressed(aKeyCode);
+}
+</pre>
+</div>
+
+<h4>Tab support</h4>
+
+<p>For some guis it might be useful to support tabbing (changing the widget that has the input focus by pressing the TAB key) between various input fields in a form.</p>
+
+<p>A way to trivially support this is to have the edit box method check if there is no current active instance (of edit box) and automatically grab the "focus" by making the current instance the active one.</p>
+
+<p>Next, we have a keypress of TAB cause the current focus to be lost. Since each edit box method invocation will check for NULL, the next exit box that is called will automatically grab the focus when it is called.</p>
+
+<div class="cpp">
+<pre><b>void</b> Gui::edit(<b>const int</b> aX, <b>const int</b> aY, String&amp; aString)
+{
+    <b>if</b>(!myEditInstance)
+    {
+        myEditInstance = &amp;aString;
+    }
+    <b>else</b>
+    {
+        <b>if</b>(keyboard::isPressed(VK_TAB))
+            myEditInstance = NULL;
+    }
+
+    <b>if</b>(&amp;aString == myEditInstance)
+        activeEdit(aX, aY, aString);
+    <b>else</b>
+        passiveEdit(aX, aY, aString);
+}
+</pre>
+</div>
+
+<p>If you want to support tabbing between all types of widgets, and for example allow buttons to be "pressed" using the spacebar as some guis do, you can do this in a similar manner. Note however than you will need to pass some kind of application-id to the button methods as well (not just the edit box methods) in order to do things this way, as the concept of focus must be extended to support all widget types.</p>
+
+<h2>Conclusion</h2>
+<p>As we have seen, <b>IMGUI</b> techniques are a powerful way to increase flexibility in your applications while reducing both complexity, code size, and nasty cache-related bugs.</p>
+
+<h3>How this ties into the rest of the book...</h3>
+
+<p>Together with an Immediate Mode <b>MVC</b> approach as well as relational-style persistence schemes, <b>IMGUI</b> techniques empower you to create a whole new level of productivity in your applications, especially in the fields of games and game editors. In general, "there is no excuse anymore" for not building custom editors right into your game applications. With the capability to instantly switch between playtesting your game and editing some aspect of it, your productivity soars, and your product is better as a result.</p>
+
+<h2>Examples</h2>
+
+<p><a href="http://www.johno.se/?tab=software">GDIplus test, including tree controls, combo boxes, sliders, and drag-and-drop</a></p>
+
+<p>DXUT gui, including color picker</p>
+
+<a href="index.html">Back to index...</a>
+
+
+</body></html>
+
+<!--
+
+SAVE PAGE WE
+
+Metrics and Resource Summary
+
+Pass 1 scan:       5 ms
+Pass 2 scan:      41 ms
+Pass 3 scan:      39 ms
+Total scans:      85 ms
+
+Pass 1 loads:     31 ms
+Pass 2 loads:     32 ms
+Total loads:      63 ms
+
+String count:      2002
+Max size:          3416
+Total size:       47994
+
+Resource count:       1
+
+Num  Refs  Reps  Status   Reason    MimeType    CharSet   ByteSize    URL
+
+  0     1     1  success            text/css    windows-       608    http://www.johno.se/book/styles.css
+
+-->

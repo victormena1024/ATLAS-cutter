@@ -1,0 +1,41 @@
+E:\cpp\SpelmotorV12\SpelmotorV12\include\GameEngine
+E:\cpp\SpelmotorV12\SpelmotorV12\src
+
+Imageutils.h
+Imageutils.cpp
+
+
+
+
+SDL2.lib;SDL2main.lib;d3d11.lib;imgui.lib;%(AdditionalDependencies)
+
+
+	bool ImGuiFileDialog::BeginFlashItem(size_t vIdx)
+	{
+		bool res = false;
+
+		if (m_FlashedItem == vIdx && 
+			std::abs(m_FlashAlpha - 0.0f) > 0.00001f)
+		{
+			m_FlashAlpha -= m_FlashAlphaAttenInSecs * ImGui::GetIO().DeltaTime;
+			if (m_FlashAlpha < 0.0f) m_FlashAlpha = 0.0f;
+
+			ImVec4 hov = ImGui::GetStyleColorVec4(ImGuiCol_HeaderHovered);
+			hov.w = m_FlashAlpha;
+			ImGui::PushStyleColor(ImGuiCol_HeaderHovered, hov);
+			res = true;
+		}
+
+		return res;
+	}
+	
+	
+		void ImGuiFileDialog::EndFlashItem()
+	{
+		ImGui::PopStyleColor();
+	}
+
+	void ImGuiFileDialog::SetFlashingAttenuationInSeconds(float vAttenValue)
+	{
+		m_FlashAlphaAttenInSecs = 1.0f / ImMax(vAttenValue,0.01f);
+	}
